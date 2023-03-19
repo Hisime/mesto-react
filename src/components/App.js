@@ -1,11 +1,10 @@
+import Header from "./Header";
 
 function App() {
   return (
       <div className="page">
       <div className="page__container">
-        <header className="header">
-          <div className="header__logo"></div>
-        </header>
+        <Header/>
         <main>
           <section className="profile">
             <div className="profile__avatar">
