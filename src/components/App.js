@@ -1,30 +1,14 @@
 import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
 
 function App() {
   return (
       <div className="page">
       <div className="page__container">
         <Header/>
-        <main>
-          <section className="profile">
-            <div className="profile__avatar">
-              <img className="profile__image" src="<%=require('./images/profile.jpg')%>" alt="Аватар"/>
-                <button className="profile__edit-avatar"></button>
-            </div>
-
-            <div className="profile__info">
-              <h1 className="profile__name"></h1>
-              <button className="profile__edit" type="button" aria-label="Редактировать"></button>
-              <p className="profile__description"></p>
-            </div>
-            <button className="profile__add" type="button" aria-label="Добавить"></button>
-          </section>
-          <section className="gallery">
-          </section>
-        </main>
-        <footer className="footer">
-          <p className="footer__copyright">© 2022 Mesto Russia</p>
-        </footer>
+        <Main/>
+        <Footer/>
         <div className="popup popup_type_edit">
           <div className="popup__container popup-wrapper">
             <h2 className="popup__title">Редактировать профиль</h2>
