@@ -3,11 +3,13 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -21,10 +23,15 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function handleCardClick() {
+    setSelectedCard(true);
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setSelectedCard(false);
   }
 
   return (
@@ -39,6 +46,7 @@ function App() {
           <PopupWithForm name={'edit'} title={'Редактировать профиль'} isOpen={isEditProfilePopupOpen} closeAllPopups={closeAllPopups}/>
           <PopupWithForm name={'add'} title={'Новое место'} isOpen={isAddPlacePopupOpen} closeAllPopups={closeAllPopups}/>
           <PopupWithForm name={'avatar'} title={'Обновить аватар'} isOpen={isEditAvatarPopupOpen} closeAllPopups={closeAllPopups}/>
+          <ImagePopup card={selectedCard} closeAllPopups={closeAllPopups}/>
 
 
         <template id="gallery-item-template">
