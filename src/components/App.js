@@ -4,6 +4,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
+import card from "./Card";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -23,14 +24,17 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleCardClick() {
-    setSelectedCard(true);
+  function handleCardClick(card) {
+    setSelectedCard(card);
   }
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+  }
+
+  function closePhotoPopup() {
     setSelectedCard(false);
   }
 
@@ -41,12 +45,13 @@ function App() {
           <Main onEditAvatar={handleEditAvatarClick}
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
+                onCardClick={handleCardClick}
           />
           <Footer/>
           <PopupWithForm name={'edit'} title={'Редактировать профиль'} isOpen={isEditProfilePopupOpen} closeAllPopups={closeAllPopups}/>
           <PopupWithForm name={'add'} title={'Новое место'} isOpen={isAddPlacePopupOpen} closeAllPopups={closeAllPopups}/>
           <PopupWithForm name={'avatar'} title={'Обновить аватар'} isOpen={isEditAvatarPopupOpen} closeAllPopups={closeAllPopups}/>
-          <ImagePopup card={selectedCard} closeAllPopups={closeAllPopups}/>
+          <ImagePopup card={selectedCard} onClose={closePhotoPopup} />
 
 
         <template id="gallery-item-template">

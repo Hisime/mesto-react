@@ -15,7 +15,6 @@ function Main(props) {
                 setUserDescription(user.about);
                 setUserAvatar(user.avatar);
                 setCards(cards);
-                console.log(cards);
             })
             .catch((err) => {
                 console.log(err);
@@ -38,7 +37,7 @@ function Main(props) {
             </section>
             <section className="gallery">
                 {cards.map((card) =>
-                    <Card card={card}/>
+                    <Card key={card._id} onCardClick={props.onCardClick} card={card}/>
                 )}
             </section>
         </main>
