@@ -4,7 +4,6 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import card from "./Card";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -48,27 +47,10 @@ function App() {
                 onCardClick={handleCardClick}
           />
           <Footer/>
-          <PopupWithForm name={'edit'} title={'Редактировать профиль'} isOpen={isEditProfilePopupOpen} closeAllPopups={closeAllPopups}/>
-          <PopupWithForm name={'add'} title={'Новое место'} isOpen={isAddPlacePopupOpen} closeAllPopups={closeAllPopups}/>
-          <PopupWithForm name={'avatar'} title={'Обновить аватар'} isOpen={isEditAvatarPopupOpen} closeAllPopups={closeAllPopups}/>
+          <PopupWithForm name={'edit'} title={'Редактировать профиль'} buttonText='Сохранить' isOpen={isEditProfilePopupOpen} closeAllPopups={closeAllPopups}/>
+          <PopupWithForm name={'add'} title={'Новое место'} buttonText='Создать' isOpen={isAddPlacePopupOpen} closeAllPopups={closeAllPopups}/>
+          <PopupWithForm name={'avatar'} title={'Обновить аватар'} buttonText='Сохранить' isOpen={isEditAvatarPopupOpen} closeAllPopups={closeAllPopups}/>
           <ImagePopup card={selectedCard} onClose={closePhotoPopup} />
-
-
-        <template id="gallery-item-template">
-          <div className="gallery__item">
-            <img className="gallery__image"
-                 src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="Байкал"/>
-              <button className="gallery__delete-button"></button>
-              <div className="gallery__bottom">
-                <h2 className="gallery__city"></h2>
-                <div className="gallery__right">
-                  <button className="gallery__favorite" type="button" aria-label="Добавить в избранное"></button>
-                  <span className="gallery__like"></span>
-                </div>
-              </div>
-          </div>
-        </template>
-
         </div>
       </div>
   );
