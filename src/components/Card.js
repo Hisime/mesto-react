@@ -1,22 +1,20 @@
-import React from "react";
-
-function Card(props) {
+function Card({card, onCardClick}) {
     function handleClick() {
-        props.onCardClick(props.card);
+        onCardClick(card);
     }
     return (
         <div className="gallery__item">
             <img className="gallery__image"
                  onClick={handleClick}
-                 src={props.card.link}
-                 alt={props.name}/>
+                 src={card.link}
+                 alt={card.name}/>
             <button className="gallery__delete-button"></button>
             <div className="gallery__bottom">
-                <h2 className="gallery__city">{props.card.name}</h2>
+                <h2 className="gallery__city">{card.name}</h2>
                 <div className="gallery__right">
                     <button className="gallery__favorite" type="button"
                             aria-label="Добавить в избранное"></button>
-                    <span className="gallery__like">{props.card.likes.length}</span>
+                    <span className="gallery__like">{card.likes.length}</span>
                 </div>
             </div>
         </div>
