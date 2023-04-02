@@ -1,4 +1,11 @@
+import {useContext} from "react";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
+
 function Card({card, onCardClick}) {
+    const currentUser = useContext(CurrentUserContext);
+    const isOwn = card.owner._id === currentUser._id;
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const cardLikeButtonClassName = `gallery__favorite ${isLiked && 'gallery__favorite_active'}`;
     function handleClick() {
         onCardClick(card);
     }
@@ -8,11 +15,11 @@ function Card({card, onCardClick}) {
                  onClick={handleClick}
                  src={card.link}
                  alt={card.name}/>
-            <button className="gallery__delete-button"></button>
+            {isOwn && <button className="gallery__delete-button"></button>}
             <div className="gallery__bottom">
                 <h2 className="gallery__city">{card.name}</h2>
                 <div className="gallery__right">
-                    <button className="gallery__favorite" type="button"
+                    <button className={cardLikeButtonClassName} type="button"
                             aria-label="Добавить в избранное"></button>
                     <span className="gallery__like">{card.likes.length}</span>
                 </div>
