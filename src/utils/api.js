@@ -51,16 +51,9 @@ export class Api {
     });
   }
 
-  addLike(id) {
+  changeLikeCardStatus(id, isLiked) {
     return this._request(`${this.baseUrl}/cards/${id}/likes`, {
-      method: 'PUT',
-      headers: this.headers,
-    });
-  }
-
-  removeLike(id) {
-    return this._request(`${this.baseUrl}/cards/${id}/likes`, {
-      method: 'DELETE',
+      method: isLiked ? 'PUT' : 'DELETE',
       headers: this.headers,
     });
   }

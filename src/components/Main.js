@@ -4,17 +4,7 @@ import Card from "./Card";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 function Main(props) {
-    const [cards, setCards] = useState([]);
     const currentUser = useContext(CurrentUserContext);
-    useEffect(() => {
-        api.getCards()
-            .then((cards) => {
-                setCards(cards);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
     return (
         <main>
             <section className="profile">
@@ -31,8 +21,8 @@ function Main(props) {
                 <button className="profile__add" type="button" aria-label="Добавить" onClick={props.onAddPlace}></button>
             </section>
             <section className="gallery">
-                {cards.map((card) =>
-                    <Card key={card._id} onCardClick={props.onCardClick} card={card}/>
+                {props.cards.map((card) =>
+                    <Card key={card._id} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} card={card}/>
                 )}
             </section>
         </main>
