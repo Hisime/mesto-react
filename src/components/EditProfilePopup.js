@@ -25,16 +25,15 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         });
     }
 
-
     // Подписка на контекст
     const currentUser = useContext(CurrentUserContext);
 
     // После загрузки текущего пользователя из API
     // его данные будут использованы в управляемых компонентах.
-        useEffect(() => {
-            setName(currentUser.name);
-            setDescription(currentUser.about);
-        }, [currentUser]);
+    useEffect(() => {
+        setName(currentUser.name);
+        setDescription(currentUser.about);
+    }, [currentUser]);
 
 
     return (
