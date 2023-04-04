@@ -62,7 +62,7 @@ export class Api {
     return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify({avatar})
+      body: JSON.stringify(avatar)
     });
   }
 }

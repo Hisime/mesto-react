@@ -25,7 +25,6 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         });
     }
 
-    console.log(name);
 
     // Подписка на контекст
     const currentUser = useContext(CurrentUserContext);
